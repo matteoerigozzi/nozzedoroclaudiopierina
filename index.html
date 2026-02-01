@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 anni insieme – Un viaggio e un album di ricordi</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.8;
+            color: #4a5568;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(180deg,
+                    #fffaf0 0%,
+                    #ffffff 100%);
+            padding: 3.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            border-top: 6px solid #d4a574;
+            /* accento oro */
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            color: #6b4423;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #b8935c;
+            /* oro più evidente */
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        section {
+            background: white;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #6b4423;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #d4a574;
+            padding-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .iban-box {
+            background: #f9f6f3;
+            border-left: 5px solid #d4a574;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .iban-label {
+            font-weight: 600;
+            color: #6b4423;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .iban-value {
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: #2c3e50;
+            word-break: break-all;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: block;
+            background: linear-gradient(135deg, #d4a574 0%, #b8935c 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 420px;
+            min-height: 56px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+        }
+
+        .contact-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-card {
+            background: #f9f6f3;
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .contact-link {
+            color: #d4a574;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Language toggle (CSS-only) */
+        .lang-toggle {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .lang {
+            display: none;
+        }
+
+        #lang-it:checked~.content .lang-it,
+        #lang-fr:checked~.content .lang-fr {
+            display: block;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 0.95rem;
+            color: #6b4423;
+            z-index: 10;
+        }
+
+        .lang-switch .lang-label {
+            cursor: pointer;
+            color: #6b4423;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        /* indicate active language */
+        #lang-it:checked~.content header .lang-switch .lang-label[for="lang-it"],
+        #lang-fr:checked~.content header .lang-switch .lang-label[for="lang-fr"] {
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        header {
+            position: relative;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 1rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .contact-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Language toggle (CSS-only) -->
+        <input type="radio" name="lang" id="lang-it" class="lang-toggle" checked>
+        <input type="radio" name="lang" id="lang-fr" class="lang-toggle">
+
+        <!-- HEADER -->
+        <div class="content">
+
+            <header>
+                <div class="lang-switch" aria-label="Selezione lingua">
+                    <label for="lang-it" class="lang-label" aria-current="true">Italiano</label>
+                    <span aria-hidden="true"> | </span>
+                    <label for="lang-fr" class="lang-label">Français</label>
+                </div>
+                <h1>50 anni insieme</h1>
+                <p class="subtitle">Nozze d’oro di Claudio e Pierina</p>
+            </header>
+
+            <!-- ITALIANO -->
+            <div class="lang lang-it" lang="it">
+                <!-- IDEA REGALO -->
+                <section>
+                    <h2>L’idea del regalo</h2>
+                    <p>
+                        Per festeggiare questo traguardo speciale, stiamo organizzando un
+                        <strong>viaggio regalo</strong>, accompagnato da un
+                        <strong>album fotografico</strong> che raccolga dediche, pensieri e ricordi
+                        di amici e familiari.
+                    </p>
+                    <p>
+                        Ogni contributo, grande o piccolo, e ogni messaggio condiviso
+                        renderanno questo regalo ancora più prezioso.
+                    </p>
+                </section>
+
+                <!-- CONTRIBUTO -->
+                <section>
+                    <h2>Come partecipare al regalo</h2>
+                    <p>
+                        Il contributo è libero. Qui trovi i riferimenti per partecipare:
+                    </p>
+
+                    <div class="iban-box">
+                        <div class="iban-label">Intestatario</div>
+                        <div class="iban-value">NOME COGNOME</div>
+
+                        <div class="iban-label">IBAN</div>
+                        <div class="iban-value">IT00 X000 0000 0000 0000 0000</div>
+
+                        <div class="iban-label">Causale</div>
+                        <div class="iban-value">Regalo 50° anniversario – Nome Cognome</div>
+                    </div>
+
+                    <p style="font-style: italic; color:#777;">
+                        Non è prevista una quota fissa: ognuno contribuisce come preferisce.
+                    </p>
+                </section>
+
+                <!-- DEDICHE -->
+                <section>
+                    <h2>Dediche e foto per l’album</h2>
+                    <p>
+                        Se ti fa piacere, puoi lasciare una dedica e, se ne hai,
+                        una o più foto insieme ai festeggiati.
+                    </p>
+
+                    <a href="https://forms.example.com" class="cta-button" target="_blank">
+                        Lascia una dedica e una foto
+                    </a>
+
+                    <p style="text-align:center; font-size:0.95rem; color:#777; margin-bottom: 0;">
+                        Il modulo è semplice e utilizzabile anche da telefono.
+                    </p>
+                    <p style="text-align:center; font-size:0.85rem; color:#888;">
+                        Le foto e i messaggi saranno utilizzati esclusivamente per l’album dell’anniversario.
+                    </p>
+                </section>
+
+                <!-- ALTERNATIVE -->
+                <section>
+                    <h2>Preferisci un altro modo?</h2>
+                    <p>
+                        Se non ti è comodo usare il modulo online, puoi inviare
+                        dedica e foto anche direttamente:
+                    </p>
+
+                    <div class="contact-options">
+                        <div class="contact-card">
+                            <p><strong>Email</strong></p>
+                            <p><a class="contact-link" href="mailto:email@example.com">email@example.com</a></p>
+                        </div>
+                        <div class="contact-card">
+                            <p><strong>WhatsApp</strong></p>
+                            <p><a class="contact-link" href="https://wa.me/391234567890">+39 123 456 7890</a></p>
+                        </div>
+                    </div>
+
+                    <p style="text-align:center; margin-top:1.5rem; color:#777;">
+                        Ci occuperemo noi di inserire tutto nell’album.
+                    </p>
+                </section>
+
+                <!-- FOOTER -->
+                <footer>
+                    <p><strong>Grazie di cuore</strong> per aver contribuito a questo regalo speciale ❤️</p>
+                </footer>
+            </div>
+
+            <!-- FRANCAIS -->
+            <div class="lang lang-fr" lang="fr">
+                <!-- IDÉE DU CADEAU -->
+                <section>
+                    <h2>L'idée du cadeau</h2>
+                    <p>
+                        Pour célébrer cet important cap, nous organisons un
+                        <strong>voyage</strong> en cadeau, accompagné d'un
+                        <strong>album photo</strong> qui rassemblera dédicaces, pensées et souvenirs
+                        d'amis et de la famille.
+                    </p>
+                    <p>
+                        Chaque contribution, petite ou grande, et chaque message partagé
+                        rendront ce cadeau encore plus précieux.
+                    </p>
+                </section>
+
+                <!-- PARTICIPER -->
+                <section>
+                    <h2>Comment participer</h2>
+                    <p>
+                        La contribution est libre. Vous trouverez ci-dessous les références pour participer :
+                    </p>
+
+                    <div class="iban-box">
+                        <div class="iban-label">Titulaire</div>
+                        <div class="iban-value">NOM PRENOM</div>
+
+                        <div class="iban-label">IBAN</div>
+                        <div class="iban-value">IT00 X000 0000 0000 0000 0000</div>
+
+                        <div class="iban-label">Motif</div>
+                        <div class="iban-value">Cadeau 50e anniversaire – Nom Prénom</div>
+                    </div>
+
+                    <p style="font-style: italic; color:#777;">
+                        Il n'y a pas de montant fixé : contribuez selon vos possibilités.
+                    </p>
+                </section>
+
+                <!-- DÉDICACES -->
+                <section>
+                    <h2>Dédicaces et photos pour l'album</h2>
+                    <p>
+                        Si vous le souhaitez, vous pouvez laisser une dédicace et, si vous en avez,
+                        une ou plusieurs photos avec les fêtés.
+                    </p>
+
+                    <a href="https://forms.example.com" class="cta-button" target="_blank">
+                        Laisser une dédicace et une photo
+                    </a>
+
+                    <p style="text-align:center; font-size:0.95rem; color:#777; margin-bottom: 0;">
+                        Le formulaire est simple et utilisable depuis un téléphone.
+                    </p>
+                    <p style="text-align:center; font-size:0.85rem; color:#888;">
+                        Les photos et messages seront utilisés uniquement pour l'album d'anniversaire.
+                    </p>
+                </section>
+
+                <!-- ALTERNATIVE -->
+                <section>
+                    <h2>Vous préférez une autre manière ?</h2>
+                    <p>
+                        Si le formulaire en ligne ne vous convient pas, vous pouvez envoyer
+                        votre dédicace et vos photos directement :
+                    </p>
+
+                    <div class="contact-options">
+                        <div class="contact-card">
+                            <p><strong>Email</strong></p>
+                            <p><a class="contact-link" href="mailto:email@example.com">email@example.com</a></p>
+                        </div>
+                        <div class="contact-card">
+                            <p><strong>WhatsApp</strong></p>
+                            <p><a class="contact-link" href="https://wa.me/391234567890">+39 123 456 7890</a></p>
+                        </div>
+                    </div>
+
+                    <p style="text-align:center; margin-top:1.5rem; color:#777;">
+                        Nous nous occuperons d'insérer tout cela dans l'album.
+                    </p>
+                </section>
+
+                <!-- FOOTER -->
+                <footer>
+                    <p><strong>Merci de tout cœur</strong> d'avoir contribué à ce cadeau spécial ❤️</p>
+                </footer>
+            </div>
+
+        </div>
+</body>
+
+</html>

@@ -458,6 +458,31 @@
             </div>
 
         </div>
+
+        <script>
+            (function () {
+
+                document.getElementById('lang-it').addEventListener('change', () => {
+                    localStorage.setItem('preferredLang', 'it');
+                });
+
+                document.getElementById('lang-fr').addEventListener('change', () => {
+                    localStorage.setItem('preferredLang', 'fr');
+                });
+
+                const savedLang = localStorage.getItem('preferredLang');
+                if (savedLang) {
+                    document.getElementById(`lang-${savedLang}`).checked = true;
+                    return;
+                }
+
+                const browserLang = navigator.language || navigator.userLanguage;
+                if (browserLang && browserLang.toLowerCase().startsWith('fr')) {
+                    document.getElementById('lang-fr').checked = true;
+                }
+            })();
+        </script>
+
 </body>
 
 </html>
